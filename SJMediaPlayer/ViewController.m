@@ -7,21 +7,46 @@
 //
 
 #import "ViewController.h"
+#import "VideoViewController.h"
 
 @interface ViewController ()
 
 @end
 
+
+
+
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.title = @"MEDIA";
+    
+    UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn1.frame = CGRectMake(self.view.frame.size.width * 0.5 - 150 * 0.5, 200, 150, 40);
+    [btn1 setTitle:@"Video" forState:UIControlStateNormal];
+    [btn1 setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    [btn1 addTarget:self action:@selector(video) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn1];
+    
+    UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn2.frame = CGRectMake(self.view.frame.size.width * 0.5 - 150 * 0.5, 280, 150, 40);
+    [btn2 setTitle:@"Audio" forState:UIControlStateNormal];
+    [btn2 setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    [btn2 addTarget:self action:@selector(audio) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn2];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)video {
+    VideoViewController *controller = [[VideoViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:YES];
 }
+
+- (void)audio {
+    
+}
+
+
+
 
 @end

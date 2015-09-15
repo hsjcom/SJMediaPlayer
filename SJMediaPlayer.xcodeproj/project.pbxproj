@@ -14,6 +14,23 @@
 		B2C6614E1BA7F72E002AA058 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2C6614D1BA7F72E002AA058 /* Images.xcassets */; };
 		B2C661511BA7F72E002AA058 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2C6614F1BA7F72E002AA058 /* LaunchScreen.xib */; };
 		B2C6615D1BA7F72E002AA058 /* SJMediaPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C6615C1BA7F72E002AA058 /* SJMediaPlayerTests.m */; };
+		B2C661681BA7F75F002AA058 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C661671BA7F75F002AA058 /* VideoViewController.m */; };
+		B2C6616A1BA7F8DF002AA058 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2C661691BA7F8DF002AA058 /* AVFoundation.framework */; };
+		B2C6616C1BA7F8E9002AA058 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2C6616B1BA7F8E9002AA058 /* MediaPlayer.framework */; };
+		B2C661821BA7F944002AA058 /* kr-video-player-close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661701BA7F944002AA058 /* kr-video-player-close@2x.png */; };
+		B2C661831BA7F944002AA058 /* kr-video-player-close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661711BA7F944002AA058 /* kr-video-player-close@3x.png */; };
+		B2C661841BA7F944002AA058 /* kr-video-player-fullscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661721BA7F944002AA058 /* kr-video-player-fullscreen@2x.png */; };
+		B2C661851BA7F944002AA058 /* kr-video-player-fullscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661731BA7F944002AA058 /* kr-video-player-fullscreen@3x.png */; };
+		B2C661861BA7F944002AA058 /* kr-video-player-pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661741BA7F944002AA058 /* kr-video-player-pause@2x.png */; };
+		B2C661871BA7F944002AA058 /* kr-video-player-pause@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661751BA7F944002AA058 /* kr-video-player-pause@3x.png */; };
+		B2C661881BA7F944002AA058 /* kr-video-player-play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661761BA7F944002AA058 /* kr-video-player-play@2x.png */; };
+		B2C661891BA7F944002AA058 /* kr-video-player-play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661771BA7F944002AA058 /* kr-video-player-play@3x.png */; };
+		B2C6618A1BA7F944002AA058 /* kr-video-player-point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661781BA7F944002AA058 /* kr-video-player-point@2x.png */; };
+		B2C6618B1BA7F944002AA058 /* kr-video-player-point@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661791BA7F944002AA058 /* kr-video-player-point@3x.png */; };
+		B2C6618C1BA7F944002AA058 /* kr-video-player-shrinkscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C6617A1BA7F944002AA058 /* kr-video-player-shrinkscreen@2x.png */; };
+		B2C6618D1BA7F944002AA058 /* kr-video-player-shrinkscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C6617B1BA7F944002AA058 /* kr-video-player-shrinkscreen@3x.png */; };
+		B2C6618E1BA7F944002AA058 /* KrVideoPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C6617E1BA7F944002AA058 /* KrVideoPlayerControlView.m */; };
+		B2C6618F1BA7F944002AA058 /* SJVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C661801BA7F944002AA058 /* SJVideoPlayerController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +57,26 @@
 		B2C661561BA7F72E002AA058 /* SJMediaPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SJMediaPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2C6615B1BA7F72E002AA058 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2C6615C1BA7F72E002AA058 /* SJMediaPlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJMediaPlayerTests.m; sourceTree = "<group>"; };
+		B2C661661BA7F75F002AA058 /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
+		B2C661671BA7F75F002AA058 /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		B2C661691BA7F8DF002AA058 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B2C6616B1BA7F8E9002AA058 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		B2C661701BA7F944002AA058 /* kr-video-player-close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-close@2x.png"; sourceTree = "<group>"; };
+		B2C661711BA7F944002AA058 /* kr-video-player-close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-close@3x.png"; sourceTree = "<group>"; };
+		B2C661721BA7F944002AA058 /* kr-video-player-fullscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-fullscreen@2x.png"; sourceTree = "<group>"; };
+		B2C661731BA7F944002AA058 /* kr-video-player-fullscreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-fullscreen@3x.png"; sourceTree = "<group>"; };
+		B2C661741BA7F944002AA058 /* kr-video-player-pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-pause@2x.png"; sourceTree = "<group>"; };
+		B2C661751BA7F944002AA058 /* kr-video-player-pause@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-pause@3x.png"; sourceTree = "<group>"; };
+		B2C661761BA7F944002AA058 /* kr-video-player-play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-play@2x.png"; sourceTree = "<group>"; };
+		B2C661771BA7F944002AA058 /* kr-video-player-play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-play@3x.png"; sourceTree = "<group>"; };
+		B2C661781BA7F944002AA058 /* kr-video-player-point@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-point@2x.png"; sourceTree = "<group>"; };
+		B2C661791BA7F944002AA058 /* kr-video-player-point@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-point@3x.png"; sourceTree = "<group>"; };
+		B2C6617A1BA7F944002AA058 /* kr-video-player-shrinkscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-shrinkscreen@2x.png"; sourceTree = "<group>"; };
+		B2C6617B1BA7F944002AA058 /* kr-video-player-shrinkscreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-shrinkscreen@3x.png"; sourceTree = "<group>"; };
+		B2C6617D1BA7F944002AA058 /* KrVideoPlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KrVideoPlayerControlView.h; sourceTree = "<group>"; };
+		B2C6617E1BA7F944002AA058 /* KrVideoPlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KrVideoPlayerControlView.m; sourceTree = "<group>"; };
+		B2C6617F1BA7F944002AA058 /* SJVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVideoPlayerController.h; sourceTree = "<group>"; };
+		B2C661801BA7F944002AA058 /* SJVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVideoPlayerController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2C6616C1BA7F8E9002AA058 /* MediaPlayer.framework in Frameworks */,
+				B2C6616A1BA7F8DF002AA058 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,13 +120,17 @@
 		B2C6613F1BA7F72E002AA058 /* SJMediaPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				B2C6616E1BA7F944002AA058 /* SJVideoPlayer */,
 				B2C661441BA7F72E002AA058 /* AppDelegate.h */,
 				B2C661451BA7F72E002AA058 /* AppDelegate.m */,
 				B2C661471BA7F72E002AA058 /* ViewController.h */,
 				B2C661481BA7F72E002AA058 /* ViewController.m */,
+				B2C661661BA7F75F002AA058 /* VideoViewController.h */,
+				B2C661671BA7F75F002AA058 /* VideoViewController.m */,
 				B2C6614A1BA7F72E002AA058 /* Main.storyboard */,
 				B2C6614D1BA7F72E002AA058 /* Images.xcassets */,
 				B2C6614F1BA7F72E002AA058 /* LaunchScreen.xib */,
+				B2C6616D1BA7F901002AA058 /* Framework */,
 				B2C661401BA7F72E002AA058 /* Supporting Files */,
 			);
 			path = SJMediaPlayer;
@@ -117,6 +160,54 @@
 				B2C6615B1BA7F72E002AA058 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B2C6616D1BA7F901002AA058 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				B2C6616B1BA7F8E9002AA058 /* MediaPlayer.framework */,
+				B2C661691BA7F8DF002AA058 /* AVFoundation.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+		B2C6616E1BA7F944002AA058 /* SJVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				B2C6616F1BA7F944002AA058 /* Assets */,
+				B2C6617C1BA7F944002AA058 /* Classes */,
+			);
+			path = SJVideoPlayer;
+			sourceTree = "<group>";
+		};
+		B2C6616F1BA7F944002AA058 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				B2C661701BA7F944002AA058 /* kr-video-player-close@2x.png */,
+				B2C661711BA7F944002AA058 /* kr-video-player-close@3x.png */,
+				B2C661721BA7F944002AA058 /* kr-video-player-fullscreen@2x.png */,
+				B2C661731BA7F944002AA058 /* kr-video-player-fullscreen@3x.png */,
+				B2C661741BA7F944002AA058 /* kr-video-player-pause@2x.png */,
+				B2C661751BA7F944002AA058 /* kr-video-player-pause@3x.png */,
+				B2C661761BA7F944002AA058 /* kr-video-player-play@2x.png */,
+				B2C661771BA7F944002AA058 /* kr-video-player-play@3x.png */,
+				B2C661781BA7F944002AA058 /* kr-video-player-point@2x.png */,
+				B2C661791BA7F944002AA058 /* kr-video-player-point@3x.png */,
+				B2C6617A1BA7F944002AA058 /* kr-video-player-shrinkscreen@2x.png */,
+				B2C6617B1BA7F944002AA058 /* kr-video-player-shrinkscreen@3x.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		B2C6617C1BA7F944002AA058 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B2C6617D1BA7F944002AA058 /* KrVideoPlayerControlView.h */,
+				B2C6617E1BA7F944002AA058 /* KrVideoPlayerControlView.m */,
+				B2C6617F1BA7F944002AA058 /* SJVideoPlayerController.h */,
+				B2C661801BA7F944002AA058 /* SJVideoPlayerController.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,9 +290,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2C661881BA7F944002AA058 /* kr-video-player-play@2x.png in Resources */,
+				B2C661831BA7F944002AA058 /* kr-video-player-close@3x.png in Resources */,
+				B2C661891BA7F944002AA058 /* kr-video-player-play@3x.png in Resources */,
+				B2C661851BA7F944002AA058 /* kr-video-player-fullscreen@3x.png in Resources */,
+				B2C6618B1BA7F944002AA058 /* kr-video-player-point@3x.png in Resources */,
+				B2C661841BA7F944002AA058 /* kr-video-player-fullscreen@2x.png in Resources */,
 				B2C6614C1BA7F72E002AA058 /* Main.storyboard in Resources */,
 				B2C661511BA7F72E002AA058 /* LaunchScreen.xib in Resources */,
 				B2C6614E1BA7F72E002AA058 /* Images.xcassets in Resources */,
+				B2C6618C1BA7F944002AA058 /* kr-video-player-shrinkscreen@2x.png in Resources */,
+				B2C661871BA7F944002AA058 /* kr-video-player-pause@3x.png in Resources */,
+				B2C6618D1BA7F944002AA058 /* kr-video-player-shrinkscreen@3x.png in Resources */,
+				B2C661821BA7F944002AA058 /* kr-video-player-close@2x.png in Resources */,
+				B2C661861BA7F944002AA058 /* kr-video-player-pause@2x.png in Resources */,
+				B2C6618A1BA7F944002AA058 /* kr-video-player-point@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +323,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2C661491BA7F72E002AA058 /* ViewController.m in Sources */,
+				B2C6618E1BA7F944002AA058 /* KrVideoPlayerControlView.m in Sources */,
 				B2C661461BA7F72E002AA058 /* AppDelegate.m in Sources */,
+				B2C6618F1BA7F944002AA058 /* SJVideoPlayerController.m in Sources */,
+				B2C661681BA7F75F002AA058 /* VideoViewController.m in Sources */,
 				B2C661431BA7F72E002AA058 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
