@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "VideoViewController.h"
+#import "AudioViewController.h"
 
 @interface ViewController ()
 
@@ -43,7 +44,8 @@
 }
 
 - (void)audio {
-    
+    AudioViewController *controller = [[AudioViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 

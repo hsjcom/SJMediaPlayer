@@ -31,6 +31,17 @@
 		B2C6618D1BA7F944002AA058 /* kr-video-player-shrinkscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C6617B1BA7F944002AA058 /* kr-video-player-shrinkscreen@3x.png */; };
 		B2C6618E1BA7F944002AA058 /* KrVideoPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C6617E1BA7F944002AA058 /* KrVideoPlayerControlView.m */; };
 		B2C6618F1BA7F944002AA058 /* SJVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C661801BA7F944002AA058 /* SJVideoPlayerController.m */; };
+		B2C661D41BABE791002AA058 /* AudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C661D31BABE791002AA058 /* AudioViewController.m */; };
+		B2C661F91BABF246002AA058 /* airplane.aac in Resources */ = {isa = PBXBuildFile; fileRef = B2C661F71BABF246002AA058 /* airplane.aac */; };
+		B2C661FA1BABF246002AA058 /* sample.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B2C661F81BABF246002AA058 /* sample.m4a */; };
+		B2C661FD1BABF3B5002AA058 /* AudioPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C661FC1BABF3B5002AA058 /* AudioPlayerView.m */; };
+		B2C6620D1BABFAB7002AA058 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C662001BABFAB7002AA058 /* AudioPlayer.m */; };
+		B2C6620E1BABFAB7002AA058 /* AutoRecoveringHttpDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C662021BABFAB7002AA058 /* AutoRecoveringHttpDataSource.m */; };
+		B2C6620F1BABFAB7002AA058 /* CoreFoundationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C662041BABFAB7002AA058 /* CoreFoundationDataSource.m */; };
+		B2C662101BABFAB7002AA058 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C662061BABFAB7002AA058 /* DataSource.m */; };
+		B2C662111BABFAB7002AA058 /* DataSourceWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C662081BABFAB7002AA058 /* DataSourceWrapper.m */; };
+		B2C662121BABFAB7002AA058 /* HttpDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C6620A1BABFAB7002AA058 /* HttpDataSource.m */; };
+		B2C662131BABFAB7002AA058 /* LocalFileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C6620C1BABFAB7002AA058 /* LocalFileDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +88,26 @@
 		B2C6617E1BA7F944002AA058 /* KrVideoPlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KrVideoPlayerControlView.m; sourceTree = "<group>"; };
 		B2C6617F1BA7F944002AA058 /* SJVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVideoPlayerController.h; sourceTree = "<group>"; };
 		B2C661801BA7F944002AA058 /* SJVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVideoPlayerController.m; sourceTree = "<group>"; };
+		B2C661D21BABE791002AA058 /* AudioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioViewController.h; path = SJMediaPlayer/AudioViewController.h; sourceTree = SOURCE_ROOT; };
+		B2C661D31BABE791002AA058 /* AudioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioViewController.m; path = SJMediaPlayer/AudioViewController.m; sourceTree = SOURCE_ROOT; };
+		B2C661F71BABF246002AA058 /* airplane.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = airplane.aac; sourceTree = "<group>"; };
+		B2C661F81BABF246002AA058 /* sample.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.m4a; sourceTree = "<group>"; };
+		B2C661FB1BABF3B5002AA058 /* AudioPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioPlayerView.h; path = SJMediaPlayer/AudioPlayerView.h; sourceTree = SOURCE_ROOT; };
+		B2C661FC1BABF3B5002AA058 /* AudioPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioPlayerView.m; path = SJMediaPlayer/AudioPlayerView.m; sourceTree = SOURCE_ROOT; };
+		B2C661FF1BABFAB7002AA058 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
+		B2C662001BABFAB7002AA058 /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
+		B2C662011BABFAB7002AA058 /* AutoRecoveringHttpDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoRecoveringHttpDataSource.h; sourceTree = "<group>"; };
+		B2C662021BABFAB7002AA058 /* AutoRecoveringHttpDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoRecoveringHttpDataSource.m; sourceTree = "<group>"; };
+		B2C662031BABFAB7002AA058 /* CoreFoundationDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreFoundationDataSource.h; sourceTree = "<group>"; };
+		B2C662041BABFAB7002AA058 /* CoreFoundationDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreFoundationDataSource.m; sourceTree = "<group>"; };
+		B2C662051BABFAB7002AA058 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
+		B2C662061BABFAB7002AA058 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
+		B2C662071BABFAB7002AA058 /* DataSourceWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSourceWrapper.h; sourceTree = "<group>"; };
+		B2C662081BABFAB7002AA058 /* DataSourceWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSourceWrapper.m; sourceTree = "<group>"; };
+		B2C662091BABFAB7002AA058 /* HttpDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpDataSource.h; sourceTree = "<group>"; };
+		B2C6620A1BABFAB7002AA058 /* HttpDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpDataSource.m; sourceTree = "<group>"; };
+		B2C6620B1BABFAB7002AA058 /* LocalFileDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFileDataSource.h; sourceTree = "<group>"; };
+		B2C6620C1BABFAB7002AA058 /* LocalFileDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFileDataSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +151,7 @@
 		B2C6613F1BA7F72E002AA058 /* SJMediaPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				B2C661F61BABF246002AA058 /* Resources */,
 				B2C6616E1BA7F944002AA058 /* SJVideoPlayer */,
 				B2C661441BA7F72E002AA058 /* AppDelegate.h */,
 				B2C661451BA7F72E002AA058 /* AppDelegate.m */,
@@ -127,6 +159,10 @@
 				B2C661481BA7F72E002AA058 /* ViewController.m */,
 				B2C661661BA7F75F002AA058 /* VideoViewController.h */,
 				B2C661671BA7F75F002AA058 /* VideoViewController.m */,
+				B2C661FB1BABF3B5002AA058 /* AudioPlayerView.h */,
+				B2C661FC1BABF3B5002AA058 /* AudioPlayerView.m */,
+				B2C661D21BABE791002AA058 /* AudioViewController.h */,
+				B2C661D31BABE791002AA058 /* AudioViewController.m */,
 				B2C6614A1BA7F72E002AA058 /* Main.storyboard */,
 				B2C6614D1BA7F72E002AA058 /* Images.xcassets */,
 				B2C6614F1BA7F72E002AA058 /* LaunchScreen.xib */,
@@ -174,6 +210,7 @@
 		B2C6616E1BA7F944002AA058 /* SJVideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				B2C661FE1BABFAB7002AA058 /* AudioPlayer */,
 				B2C6616F1BA7F944002AA058 /* Assets */,
 				B2C6617C1BA7F944002AA058 /* Classes */,
 			);
@@ -209,6 +246,37 @@
 			);
 			path = Classes;
 			sourceTree = "<group>";
+		};
+		B2C661F61BABF246002AA058 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B2C661F71BABF246002AA058 /* airplane.aac */,
+				B2C661F81BABF246002AA058 /* sample.m4a */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B2C661FE1BABFAB7002AA058 /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				B2C661FF1BABFAB7002AA058 /* AudioPlayer.h */,
+				B2C662001BABFAB7002AA058 /* AudioPlayer.m */,
+				B2C662011BABFAB7002AA058 /* AutoRecoveringHttpDataSource.h */,
+				B2C662021BABFAB7002AA058 /* AutoRecoveringHttpDataSource.m */,
+				B2C662031BABFAB7002AA058 /* CoreFoundationDataSource.h */,
+				B2C662041BABFAB7002AA058 /* CoreFoundationDataSource.m */,
+				B2C662051BABFAB7002AA058 /* DataSource.h */,
+				B2C662061BABFAB7002AA058 /* DataSource.m */,
+				B2C662071BABFAB7002AA058 /* DataSourceWrapper.h */,
+				B2C662081BABFAB7002AA058 /* DataSourceWrapper.m */,
+				B2C662091BABFAB7002AA058 /* HttpDataSource.h */,
+				B2C6620A1BABFAB7002AA058 /* HttpDataSource.m */,
+				B2C6620B1BABFAB7002AA058 /* LocalFileDataSource.h */,
+				B2C6620C1BABFAB7002AA058 /* LocalFileDataSource.m */,
+			);
+			name = AudioPlayer;
+			path = SJMediaPlayer/AudioPlayer;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -290,6 +358,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2C661FA1BABF246002AA058 /* sample.m4a in Resources */,
 				B2C661881BA7F944002AA058 /* kr-video-player-play@2x.png in Resources */,
 				B2C661831BA7F944002AA058 /* kr-video-player-close@3x.png in Resources */,
 				B2C661891BA7F944002AA058 /* kr-video-player-play@3x.png in Resources */,
@@ -301,6 +370,7 @@
 				B2C6614E1BA7F72E002AA058 /* Images.xcassets in Resources */,
 				B2C6618C1BA7F944002AA058 /* kr-video-player-shrinkscreen@2x.png in Resources */,
 				B2C661871BA7F944002AA058 /* kr-video-player-pause@3x.png in Resources */,
+				B2C661F91BABF246002AA058 /* airplane.aac in Resources */,
 				B2C6618D1BA7F944002AA058 /* kr-video-player-shrinkscreen@3x.png in Resources */,
 				B2C661821BA7F944002AA058 /* kr-video-player-close@2x.png in Resources */,
 				B2C661861BA7F944002AA058 /* kr-video-player-pause@2x.png in Resources */,
@@ -323,11 +393,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2C661491BA7F72E002AA058 /* ViewController.m in Sources */,
+				B2C6620D1BABFAB7002AA058 /* AudioPlayer.m in Sources */,
+				B2C662121BABFAB7002AA058 /* HttpDataSource.m in Sources */,
+				B2C662131BABFAB7002AA058 /* LocalFileDataSource.m in Sources */,
+				B2C662101BABFAB7002AA058 /* DataSource.m in Sources */,
 				B2C6618E1BA7F944002AA058 /* KrVideoPlayerControlView.m in Sources */,
 				B2C661461BA7F72E002AA058 /* AppDelegate.m in Sources */,
 				B2C6618F1BA7F944002AA058 /* SJVideoPlayerController.m in Sources */,
 				B2C661681BA7F75F002AA058 /* VideoViewController.m in Sources */,
+				B2C662111BABFAB7002AA058 /* DataSourceWrapper.m in Sources */,
+				B2C661D41BABE791002AA058 /* AudioViewController.m in Sources */,
+				B2C6620F1BABFAB7002AA058 /* CoreFoundationDataSource.m in Sources */,
+				B2C661FD1BABF3B5002AA058 /* AudioPlayerView.m in Sources */,
 				B2C661431BA7F72E002AA058 /* main.m in Sources */,
+				B2C6620E1BABFAB7002AA058 /* AutoRecoveringHttpDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +603,7 @@
 				B2C661621BA7F72E002AA058 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B2C661631BA7F72E002AA058 /* Build configuration list for PBXNativeTarget "SJMediaPlayerTests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +612,7 @@
 				B2C661651BA7F72E002AA058 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
