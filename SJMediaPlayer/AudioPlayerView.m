@@ -1,44 +1,18 @@
-/**********************************************************************************
- AudioPlayer.m
- 
- Created by Thong Nguyen on 14/05/2012.
- https://github.com/tumtumtum/audjustable
- 
- Copyright (c) 2012 Thong Nguyen (tumtumtum@gmail.com). All rights reserved.
- 
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are met:
- 1. Redistributions of source code must retain the above copyright
- notice, this list of conditions and the following disclaimer.
- 2. Redistributions in binary form must reproduce the above copyright
- notice, this list of conditions and the following disclaimer in the
- documentation and/or other materials provided with the distribution.
- 3. All advertising materials mentioning features or use of this software
- must display the following acknowledgement:
- This product includes software developed by Thong Nguyen (tumtumtum@gmail.com)
- 4. Neither the name of Thong Nguyen nor the
- names of its contributors may be used to endorse or promote products
- derived from this software without specific prior written permission.
- 
- THIS SOFTWARE IS PROVIDED BY Thong Nguyen ''AS IS'' AND ANY
- EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- DISCLAIMED. IN NO EVENT SHALL THONG NGUYEN BE LIABLE FOR ANY
- DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- **********************************************************************************/
+//
+//  AudioPlayerView.m
+//  SJMediaPlayer
+//
+//  Created by Soldier on 15/9/18.
+//  Copyright (c) 2015年 Shaojie Hong. All rights reserved.
+//
 
 #import "AudioPlayerView.h"
 
 @interface AudioPlayerView()
 
--(void)setupTimer;
+- (void)setupTimer;
 
--(void)updateControls;
+- (void)updateControls;
 
 @end
 
@@ -46,9 +20,12 @@
 
 @implementation AudioPlayerView
 
+- (void)dealloc {
+    [self cancelTimer];
+}
+
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-	
     if (self) {
 		CGSize size = CGSizeMake(180, 50);
         _audioPlayer = [[AudioPlayer alloc] init];
@@ -96,7 +73,7 @@
     return self;
 }
 
--(void)sliderChanged {
+- (void)sliderChanged {
 	if (!_audioPlayer) {
 		return;
 	}
@@ -106,13 +83,19 @@
 	[self.audioPlayer seekToTime:_slider.value];
 }
 
--(void)setupTimer {
-	_timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
-	
-	[[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+- (void)setupTimer {
+    if (_timer == nil) {
+        _timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+    }
 }
 
--(void)tick{
+- (void)cancelTimer {
+    [_timer invalidate];
+    _timer = nil;
+}
+
+- (void)tick{
 	if (!_audioPlayer || _audioPlayer.duration == 0) {
 		_slider.value = 0;
 		
@@ -128,61 +111,57 @@
     _durationLabel.text = [self.class dateForMinSec:[NSString stringWithFormat:@"%f", _audioPlayer.duration]];
 }
 
--(void)playFromHTTPButtonTouched {
+- (void)playFromHTTPButtonTouched {
 	[self audioPlayerViewPlayFromHTTPSelected:self];
 }
 
--(void)playFromLocalFileButtonTouched {
+- (void)playFromLocalFileButtonTouched {
 	[self audioPlayerViewPlayFromLocalFileSelected:self];
 }
 
--(void)playButtonPressed {
+- (void)playButtonPressed {
 	if (!self.audioPlayer) {
 		return;
 	}
 	
 	if (self.audioPlayer.state == AudioPlayerStatePaused) {
 		[self.audioPlayer resume];
-	}
-	else {
+	} else {
 		[self.audioPlayer pause];
 	}
 }
 
--(void)updateControls {
+- (void)updateControls {
 	if (self.audioPlayer == nil) {
 		[_playButton setTitle:@"Play" forState:UIControlStateNormal];
-	}
-	else if (self.audioPlayer.state == AudioPlayerStatePaused) {
+	} else if (self.audioPlayer.state == AudioPlayerStatePaused) {
 		[_playButton setTitle:@"Resume" forState:UIControlStateNormal];
-	}
-	else if (self.audioPlayer.state == AudioPlayerStatePlaying) {
+	} else if (self.audioPlayer.state == AudioPlayerStatePlaying) {
 		[_playButton setTitle:@"Pause" forState:UIControlStateNormal];
-	}
-	else {
+	} else {
 		[_playButton setTitle:@"Play" forState:UIControlStateNormal];
 	}
 }
 
 #pragma mark - AudioPlayerDelegate
 
--(void)audioPlayer:(AudioPlayer *)audioPlayer stateChanged:(AudioPlayerState)state {
+- (void)audioPlayer:(AudioPlayer *)audioPlayer stateChanged:(AudioPlayerState)state {
 	[self updateControls];
 }
 
--(void)audioPlayer:(AudioPlayer *)audioPlayer didEncounterError:(AudioPlayerErrorCode)errorCode {
+- (void)audioPlayer:(AudioPlayer *)audioPlayer didEncounterError:(AudioPlayerErrorCode)errorCode {
 	[self updateControls];
 }
 
--(void)audioPlayer:(AudioPlayer *)audioPlayer didStartPlayingQueueItemId:(NSObject *)queueItemId {
+- (void)audioPlayer:(AudioPlayer *)audioPlayer didStartPlayingQueueItemId:(NSObject *)queueItemId {
 	[self updateControls];
 }
 
--(void)audioPlayer:(AudioPlayer *)audioPlayer didFinishBufferingSourceWithQueueItemId:(NSObject *)queueItemId {
+- (void)audioPlayer:(AudioPlayer *)audioPlayer didFinishBufferingSourceWithQueueItemId:(NSObject *)queueItemId {
 	[self updateControls];
 }
 
--(void)audioPlayer:(AudioPlayer *)audioPlayer didFinishPlayingQueueItemId:(NSObject *)queueItemId withReason:(AudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration {
+- (void)audioPlayer:(AudioPlayer *)audioPlayer didFinishPlayingQueueItemId:(NSObject *)queueItemId withReason:(AudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration {
 	[self updateControls];
 }
 
@@ -198,13 +177,13 @@
     return str;
 }
 
--(void)audioPlayerViewPlayFromHTTPSelected:(AudioPlayerView *)audioPlayerView {
+- (void)audioPlayerViewPlayFromHTTPSelected:(AudioPlayerView *)audioPlayerView {
     NSURL *url = [NSURL URLWithString:@"http://sc.111ttt.com/up/mp3/80979/0A314FB20108D7E0AD282BCC8C8038BD.mp3"];
     
     [self.audioPlayer setDataSource:[self.audioPlayer dataSourceFromURL:url] withQueueItemId:url];
 }
 
--(void)audioPlayerViewPlayFromLocalFileSelected:(AudioPlayerView *)audioPlayerView {
+- (void)audioPlayerViewPlayFromLocalFileSelected:(AudioPlayerView *)audioPlayerView {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"m4a"];
     NSURL *url = [NSURL fileURLWithPath:path];
     
