@@ -1,19 +1,19 @@
 //
-//  KrVideoPlayerControlView.m
-//  KrVideoPlayerPlus
+//  SJVideoPlayerControlView.m
+//  SJVideoPlayerPlus
 //
-//  Created by JiaHaiyang on 15/6/19.
-//  Copyright (c) 2015年 JiaHaiyang. All rights reserved.
+//  Created by Shaojie Hong on 15/9/15.
+//  Copyright (c) 2015年 Shaojie Hong. All rights reserved.
 //
 
-#import "KrVideoPlayerControlView.h"
+#import "SJVideoPlayerControlView.h"
 
 static const CGFloat kVideoControlBarHeight = 40.0;
 static const CGFloat kVideoControlAnimationTimeinterval = 0.3;
 static const CGFloat kVideoControlTimeLabelFontSize = 10.0;
 static const CGFloat kVideoControlBarAutoFadeOutTimeinterval = 5.0;
 
-@interface KrVideoPlayerControlView()
+@interface SJVideoPlayerControlView()
 
 @property (nonatomic, strong) UIView *topBar;
 @property (nonatomic, strong) UIView *bottomBar;
@@ -31,7 +31,11 @@ static const CGFloat kVideoControlBarAutoFadeOutTimeinterval = 5.0;
 
 
 
-@implementation KrVideoPlayerControlView
+@implementation SJVideoPlayerControlView
+
+- (void)dealloc {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+}
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -142,7 +146,7 @@ static const CGFloat kVideoControlBarAutoFadeOutTimeinterval = 5.0;
 - (UIButton *)playButton {
     if (!_playButton) {
         _playButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_playButton setImage:[UIImage imageNamed:@"kr-video-player-play"] forState:UIControlStateNormal];
+        [_playButton setImage:[UIImage imageNamed:@"video-player-play"] forState:UIControlStateNormal];
         _playButton.bounds = CGRectMake(0, 0, kVideoControlBarHeight, kVideoControlBarHeight);
     }
     return _playButton;
@@ -151,7 +155,7 @@ static const CGFloat kVideoControlBarAutoFadeOutTimeinterval = 5.0;
 - (UIButton *)pauseButton {
     if (!_pauseButton) {
         _pauseButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_pauseButton setImage:[UIImage imageNamed:@"kr-video-player-pause"] forState:UIControlStateNormal];
+        [_pauseButton setImage:[UIImage imageNamed:@"video-player-pause"] forState:UIControlStateNormal];
         _pauseButton.bounds = CGRectMake(0, 0, kVideoControlBarHeight, kVideoControlBarHeight);
     }
     return _pauseButton;
@@ -160,7 +164,7 @@ static const CGFloat kVideoControlBarAutoFadeOutTimeinterval = 5.0;
 - (UIButton *)fullScreenButton {
     if (!_fullScreenButton) {
         _fullScreenButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_fullScreenButton setImage:[UIImage imageNamed:@"kr-video-player-fullscreen"] forState:UIControlStateNormal];
+        [_fullScreenButton setImage:[UIImage imageNamed:@"video-player-fullscreen"] forState:UIControlStateNormal];
         _fullScreenButton.bounds = CGRectMake(0, 0, kVideoControlBarHeight, kVideoControlBarHeight);
     }
     return _fullScreenButton;

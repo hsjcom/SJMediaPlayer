@@ -7,14 +7,14 @@
 //
 
 #import "SJVideoPlayerController.h"
-#import "KrVideoPlayerControlView.h"
+#import "SJVideoPlayerControlView.h"
 #import <AVFoundation/AVFoundation.h>
 
 static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
 
 @interface SJVideoPlayerController()
 
-@property (nonatomic, strong) KrVideoPlayerControlView *videoControl;
+@property (nonatomic, strong) SJVideoPlayerControlView *videoControl;
 @property (nonatomic, strong) UIView *movieBackgroundView;
 @property (nonatomic, assign) BOOL isFullscreenMode;
 @property (nonatomic, assign) CGRect originFrame;
@@ -27,6 +27,7 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
 
 - (void)dealloc {
     [self cancelObserver];
+    [self stopDurationTimer];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame contentURL:(NSString *)url {
@@ -47,8 +48,6 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
         
         [self.view addSubview:self.videoControl];
         self.videoControl.frame = self.view.bounds;
-        
-        
     }
     return self;
 }
@@ -69,12 +68,7 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
         keyWindow = [[[UIApplication sharedApplication] windows] firstObject];
     }
     [keyWindow addSubview:self.view];
-    self.view.alpha = 0.0;
-    [UIView animateWithDuration:kVideoPlayerControllerAnimationTimeinterval animations:^{
-        self.view.alpha = 1.0;
-    } completion:^(BOOL finished) {
-        
-    }];
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 }
 
@@ -120,6 +114,8 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
     [self.videoControl.progressSlider addTarget:self action:@selector(progressSliderTouchBegan:) forControlEvents:UIControlEventTouchDown];
     [self.videoControl.progressSlider addTarget:self action:@selector(progressSliderTouchEnded:) forControlEvents:UIControlEventTouchUpInside];
     [self.videoControl.progressSlider addTarget:self action:@selector(progressSliderTouchEnded:) forControlEvents:UIControlEventTouchUpOutside];
+    [self.videoControl.progressSlider addTarget:self action:@selector(progressSliderTouchEnded:) forControlEvents:UIControlEventTouchCancel];
+    
     [self setProgressSliderMaxMinValues];
     [self monitorVideoPlayback];
 }
@@ -157,13 +153,28 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
 }
 
 - (void)onMPMoviePlayerPlaybackDidFinishNotification {
+    self.videoControl.progressSlider.value = 0;
+    [self stopDurationTimer];
     [self showViewCover];
+    
+    if (self.willFinishPlayBlock) {
+        self.willFinishPlayBlock();
+    }
 }
 
 - (void)playButtonClick {
     [self play];
     self.videoControl.playButton.hidden = YES;
     self.videoControl.pauseButton.hidden = NO;
+}
+
+- (void)stopButtonClick {
+    self.videoControl.progressSlider.value = 0;
+    self.videoControl.playButton.hidden = NO;
+    self.videoControl.pauseButton.hidden = YES;
+    [self stopDurationTimer];
+    [self showViewCover];
+    [self stop];
 }
 
 - (void)pauseButtonClick {
@@ -212,7 +223,7 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
     UIInterfaceOrientation interfaceOrientation = (UIInterfaceOrientation)orientation;
     switch (interfaceOrientation) {
-            /**        case UIInterfaceOrientationUnknown:
+            /**  case UIInterfaceOrientationUnknown:
              NSLog(@"未知方向");
              break;
              */
@@ -251,6 +262,10 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
     if (!self.isFullscreenMode) {
         return;
     }
+    /*
+     * 若在windows上显示
+     */
+//    [self.superVideoView addSubview:self.view];
     
     [UIView animateWithDuration:0.3f animations:^{
         [self.view setTransform:CGAffineTransformIdentity];
@@ -268,22 +283,6 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
 
 //电池栏在左全屏
 - (void)setDeviceOrientationLandscapeRight{
-    
-    //    if (self.integer==2) {
-    //        self.originFrame = self.view.frame;
-    //        CGFloat height = [[UIScreen mainScreen] bounds].size.width;
-    //        CGFloat width = [[UIScreen mainScreen] bounds].size.height;
-    //        CGRect frame = CGRectMake((height - width) / 2, (width - height) / 2, width, height);;
-    //        [UIView animateWithDuration:0.3f animations:^{
-    //            self.frame = frame;
-    //            [self.view setTransform:CGAffineTransformMakeRotation(M_PI)];
-    //        } completion:^(BOOL finished) {
-    //            self.integer = 1;
-    //            self.isFullscreenMode = YES;
-    //            self.videoControl.fullScreenButton.hidden = YES;
-    //            self.videoControl.shrinkScreenButton.hidden = NO;
-    //        }];
-    //    }
     if (self.isFullscreenMode) {
         return;
     }
@@ -291,7 +290,12 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
     self.originFrame = self.view.frame;
     CGFloat height = [[UIScreen mainScreen] bounds].size.width;
     CGFloat width = [[UIScreen mainScreen] bounds].size.height;
-    CGRect frame = CGRectMake((height - width) / 2, (width - height) / 2, width, height);;
+    CGRect frame = CGRectMake((height - width) / 2, (width - height) / 2, width, height);
+    /*
+     * 若要在windows上显示
+     */
+//    [self showInWindow];
+    
     [UIView animateWithDuration:0.3f animations:^{
         self.frame = frame;
         [self.view setTransform:CGAffineTransformMakeRotation(M_PI_2)];
@@ -307,29 +311,18 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
 
 //电池栏在右全屏
 - (void)setDeviceOrientationLandscapeLeft {
-    
-    //    if  (self.integer==1){
-    //        self.originFrame = self.view.frame;
-    //        CGFloat height = [[UIScreen mainScreen] bounds].size.width;
-    //        CGFloat width = [[UIScreen mainScreen] bounds].size.height;
-    //        CGRect frame = CGRectMake((height - width) / 2, (width - height) / 2, width, height);;
-    //        [UIView animateWithDuration:0.3f animations:^{
-    //            self.frame = frame;
-    //            [self.view setTransform:CGAffineTransformMakeRotation(-M_PI)];
-    //        } completion:^(BOOL finished) {
-    //            self.integer = 2;
-    //            self.isFullscreenMode = YES;
-    //            self.videoControl.fullScreenButton.hidden = YES;
-    //            self.videoControl.shrinkScreenButton.hidden = NO;
-    //        }];
-    //    }
     if (self.isFullscreenMode) {
         return;
     }
     self.originFrame = self.view.frame;
     CGFloat height = [[UIScreen mainScreen] bounds].size.width;
     CGFloat width = [[UIScreen mainScreen] bounds].size.height;
-    CGRect frame = CGRectMake((height - width) / 2, (width - height) / 2, width, height);;
+    CGRect frame = CGRectMake((height - width) / 2, (width - height) / 2, width, height);
+    /*
+     * 若要在windows上显示
+     */
+//    [self showInWindow];
+    
     [UIView animateWithDuration:0.3f animations:^{
         self.frame = frame;
         [self.view setTransform:CGAffineTransformMakeRotation(-M_PI_2)];
@@ -386,12 +379,15 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
 }
 
 - (void)startDurationTimer {
-    self.durationTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(monitorVideoPlayback) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.durationTimer forMode:NSDefaultRunLoopMode];
+    if (!_durationTimer) {
+        _durationTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(monitorVideoPlayback) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:_durationTimer forMode:NSDefaultRunLoopMode];
+    }
 }
 
 - (void)stopDurationTimer {
-    [self.durationTimer invalidate];
+    [_durationTimer invalidate];
+    _durationTimer = nil;
 }
 
 - (void)fadeDismissControl {
@@ -400,9 +396,9 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
 
 #pragma mark - Property
 
-- (KrVideoPlayerControlView *)videoControl {
+- (SJVideoPlayerControlView *)videoControl {
     if (!_videoControl) {
-        _videoControl = [[KrVideoPlayerControlView alloc] init];
+        _videoControl = [[SJVideoPlayerControlView alloc] init];
     }
     return _videoControl;
 }
@@ -464,7 +460,7 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
     }
 }
 
-- (void)videoThumbnailLoadComplete:(NSNotification*)notification{
+- (void)videoThumbnailLoadComplete:(NSNotification *)notification{
     NSDictionary *userInfo = [notification userInfo];
 //    NSNumber *timecode =[userInfo objectForKey:MPMoviePlayerThumbnailTimeKey];
     self.thumbnailImage = [userInfo objectForKey:MPMoviePlayerThumbnailImageKey];

@@ -29,31 +29,33 @@
 }
 
 - (void)playVideo{
-    NSString *url = @"http://7qnah8.com1.z0.glb.clouddn.com/Cinematic1.mp4";
+    self.url = @"http://www.itinge.com/music/15395.mp4";
+    // http://7qnah8.com1.z0.glb.clouddn.com/Cinematic1.mp4
     // http://www.itinge.com/music/15395.mp4
     // http://krtv.qiniudn.com/150522nextapp
-    // http://www.itinge.com/music/15395.mp4
     
-    [self addVideoPlayerWithURL:url];
+    [self videoController];
+    [self setConfig];
 }
 
-- (void)addVideoPlayerWithURL:(NSString *)url{
-    if (!self.videoController) {
-        CGFloat width = [UIScreen mainScreen].bounds.size.width;
-        self.videoController = [[SJVideoPlayerController alloc] initWithFrame:CGRectMake(0, 64, width, width * (9.0 / 16.0)) contentURL:url];
-        __weak typeof(self)weakSelf = self;
-        [self.videoController setDimissCompleteBlock:^{
-            weakSelf.videoController = nil;
-        }];
-        [self.videoController setWillBackOrientationPortrait:^{
-            [weakSelf toolbarHidden:NO];
-        }];
-        [self.videoController setWillChangeToFullscreenMode:^{
-            [weakSelf toolbarHidden:YES];
-        }];
+- (void)setConfig {
+    __weak typeof(self)weakSelf = self;
+    
+    [self.videoController setWillFinishPlayBlock:^{
         
-        [self.view addSubview:self.videoController.view];
-    }
+    }];
+    
+    [self.videoController setDimissCompleteBlock:^{
+        weakSelf.videoController = nil;
+    }];
+    
+    [self.videoController setWillBackOrientationPortrait:^{
+        [weakSelf toolbarHidden:NO];
+    }];
+    
+    [self.videoController setWillChangeToFullscreenMode:^{
+        [weakSelf toolbarHidden:YES];
+    }];
 }
 
 //隐藏navigation tabbar 电池栏
@@ -61,6 +63,29 @@
     self.navigationController.navigationBar.hidden = Bool;
     self.tabBarController.tabBar.hidden = Bool;
     [[UIApplication sharedApplication] setStatusBarHidden:Bool withAnimation:UIStatusBarAnimationFade];
+}
+
+//MPMoviePlayerController 系统机制，只能有一个在播放
+- (void)stop {
+    [self.videoController stopButtonClick];
+    //释放
+    _videoController = nil;
+}
+
+- (SJVideoPlayerController *)videoController {
+    if (!_videoController) {
+        CGFloat width = [UIScreen mainScreen].bounds.size.width;
+        _videoController = [[SJVideoPlayerController alloc] initWithFrame:CGRectMake(0, 64, width, width * (9.0 / 16.0)) contentURL:self.url];
+        
+        /*
+         * 若要在windows上显示
+         */
+        self.videoController.superVideoView = self.view;
+        
+        [self.view addSubview:self.videoController.view];
+    }
+//    _videoController.contentURL = [NSURL URLWithString:self.url];
+    return _videoController;
 }
 
 @end

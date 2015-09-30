@@ -18,7 +18,12 @@
 @property (nonatomic, copy)void(^willBackOrientationPortrait)(void);
 /** 进入全屏状态 */
 @property (nonatomic, copy)void(^willChangeToFullscreenMode)(void);
+/** 进入播放结束状态 */
+@property (nonatomic, copy)void(^willFinishPlayBlock)(void);
+
 @property (nonatomic, assign) CGRect frame;
+
+@property (nonatomic, strong) UIView *superVideoView; //superview，用于全屏在window上时，恢复视图回到原superview
 
 @property (nonatomic, strong) UIImage *thumbnailImage; //视频缩略图
 @property (nonatomic, strong) UIImageView *videoCover; //video封面
@@ -35,5 +40,9 @@
 + (UIImage *)thumbnailImageForVideo:(NSURL *)videoURL atTime:(NSTimeInterval)time;
 
 - (void)constructVideoCover;
+
+- (void)playButtonClick;
+
+- (void)stopButtonClick;
 
 @end

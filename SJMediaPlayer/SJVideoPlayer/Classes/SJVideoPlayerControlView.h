@@ -1,14 +1,14 @@
 //
-//  KrVideoPlayerControlView.h
-//  KrVideoPlayerPlus
+//  SJVideoPlayerControlView.h
+//  SJVideoPlayerPlus
 //
-//  Created by JiaHaiyang on 15/6/19.
-//  Copyright (c) 2015年 JiaHaiyang. All rights reserved.
+//  Created by Shaojie Hong on 15/9/15.
+//  Copyright (c) 2015年 Shaojie Hong. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface KrVideoPlayerControlView : UIView
+@interface SJVideoPlayerControlView : UIView
 
 @property (nonatomic, strong, readonly) UIView *topBar;
 @property (nonatomic, strong, readonly) UIView *bottomBar;

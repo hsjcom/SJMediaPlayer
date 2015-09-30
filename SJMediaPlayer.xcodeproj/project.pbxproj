@@ -19,17 +19,11 @@
 		B2C6616C1BA7F8E9002AA058 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2C6616B1BA7F8E9002AA058 /* MediaPlayer.framework */; };
 		B2C661821BA7F944002AA058 /* kr-video-player-close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661701BA7F944002AA058 /* kr-video-player-close@2x.png */; };
 		B2C661831BA7F944002AA058 /* kr-video-player-close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661711BA7F944002AA058 /* kr-video-player-close@3x.png */; };
-		B2C661841BA7F944002AA058 /* kr-video-player-fullscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661721BA7F944002AA058 /* kr-video-player-fullscreen@2x.png */; };
-		B2C661851BA7F944002AA058 /* kr-video-player-fullscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661731BA7F944002AA058 /* kr-video-player-fullscreen@3x.png */; };
-		B2C661861BA7F944002AA058 /* kr-video-player-pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661741BA7F944002AA058 /* kr-video-player-pause@2x.png */; };
-		B2C661871BA7F944002AA058 /* kr-video-player-pause@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661751BA7F944002AA058 /* kr-video-player-pause@3x.png */; };
-		B2C661881BA7F944002AA058 /* kr-video-player-play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661761BA7F944002AA058 /* kr-video-player-play@2x.png */; };
-		B2C661891BA7F944002AA058 /* kr-video-player-play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661771BA7F944002AA058 /* kr-video-player-play@3x.png */; };
 		B2C6618A1BA7F944002AA058 /* kr-video-player-point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661781BA7F944002AA058 /* kr-video-player-point@2x.png */; };
 		B2C6618B1BA7F944002AA058 /* kr-video-player-point@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C661791BA7F944002AA058 /* kr-video-player-point@3x.png */; };
 		B2C6618C1BA7F944002AA058 /* kr-video-player-shrinkscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C6617A1BA7F944002AA058 /* kr-video-player-shrinkscreen@2x.png */; };
 		B2C6618D1BA7F944002AA058 /* kr-video-player-shrinkscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C6617B1BA7F944002AA058 /* kr-video-player-shrinkscreen@3x.png */; };
-		B2C6618E1BA7F944002AA058 /* KrVideoPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C6617E1BA7F944002AA058 /* KrVideoPlayerControlView.m */; };
+		B2C6618E1BA7F944002AA058 /* SJVideoPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C6617E1BA7F944002AA058 /* SJVideoPlayerControlView.m */; };
 		B2C6618F1BA7F944002AA058 /* SJVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C661801BA7F944002AA058 /* SJVideoPlayerController.m */; };
 		B2C661D41BABE791002AA058 /* AudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C661D31BABE791002AA058 /* AudioViewController.m */; };
 		B2C661F91BABF246002AA058 /* airplane.aac in Resources */ = {isa = PBXBuildFile; fileRef = B2C661F71BABF246002AA058 /* airplane.aac */; };
@@ -42,6 +36,12 @@
 		B2C662111BABFAB7002AA058 /* DataSourceWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C662081BABFAB7002AA058 /* DataSourceWrapper.m */; };
 		B2C662121BABFAB7002AA058 /* HttpDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C6620A1BABFAB7002AA058 /* HttpDataSource.m */; };
 		B2C662131BABFAB7002AA058 /* LocalFileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C6620C1BABFAB7002AA058 /* LocalFileDataSource.m */; };
+		B2DEC9CD1BB29B2E001C8ED1 /* video-player-fullscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2DEC9C71BB29B2E001C8ED1 /* video-player-fullscreen@2x.png */; settings = {ASSET_TAGS = (); }; };
+		B2DEC9CE1BB29B2E001C8ED1 /* video-player-fullscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2DEC9C81BB29B2E001C8ED1 /* video-player-fullscreen@3x.png */; settings = {ASSET_TAGS = (); }; };
+		B2DEC9CF1BB29B2E001C8ED1 /* video-player-pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2DEC9C91BB29B2E001C8ED1 /* video-player-pause@2x.png */; settings = {ASSET_TAGS = (); }; };
+		B2DEC9D01BB29B2E001C8ED1 /* video-player-pause@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2DEC9CA1BB29B2E001C8ED1 /* video-player-pause@3x.png */; settings = {ASSET_TAGS = (); }; };
+		B2DEC9D11BB29B2E001C8ED1 /* video-player-play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2DEC9CB1BB29B2E001C8ED1 /* video-player-play@2x.png */; settings = {ASSET_TAGS = (); }; };
+		B2DEC9D21BB29B2E001C8ED1 /* video-player-play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2DEC9CC1BB29B2E001C8ED1 /* video-player-play@3x.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,18 +74,12 @@
 		B2C6616B1BA7F8E9002AA058 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		B2C661701BA7F944002AA058 /* kr-video-player-close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-close@2x.png"; sourceTree = "<group>"; };
 		B2C661711BA7F944002AA058 /* kr-video-player-close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-close@3x.png"; sourceTree = "<group>"; };
-		B2C661721BA7F944002AA058 /* kr-video-player-fullscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-fullscreen@2x.png"; sourceTree = "<group>"; };
-		B2C661731BA7F944002AA058 /* kr-video-player-fullscreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-fullscreen@3x.png"; sourceTree = "<group>"; };
-		B2C661741BA7F944002AA058 /* kr-video-player-pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-pause@2x.png"; sourceTree = "<group>"; };
-		B2C661751BA7F944002AA058 /* kr-video-player-pause@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-pause@3x.png"; sourceTree = "<group>"; };
-		B2C661761BA7F944002AA058 /* kr-video-player-play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-play@2x.png"; sourceTree = "<group>"; };
-		B2C661771BA7F944002AA058 /* kr-video-player-play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-play@3x.png"; sourceTree = "<group>"; };
 		B2C661781BA7F944002AA058 /* kr-video-player-point@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-point@2x.png"; sourceTree = "<group>"; };
 		B2C661791BA7F944002AA058 /* kr-video-player-point@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-point@3x.png"; sourceTree = "<group>"; };
 		B2C6617A1BA7F944002AA058 /* kr-video-player-shrinkscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-shrinkscreen@2x.png"; sourceTree = "<group>"; };
 		B2C6617B1BA7F944002AA058 /* kr-video-player-shrinkscreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-shrinkscreen@3x.png"; sourceTree = "<group>"; };
-		B2C6617D1BA7F944002AA058 /* KrVideoPlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KrVideoPlayerControlView.h; sourceTree = "<group>"; };
-		B2C6617E1BA7F944002AA058 /* KrVideoPlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KrVideoPlayerControlView.m; sourceTree = "<group>"; };
+		B2C6617D1BA7F944002AA058 /* SJVideoPlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVideoPlayerControlView.h; sourceTree = "<group>"; };
+		B2C6617E1BA7F944002AA058 /* SJVideoPlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVideoPlayerControlView.m; sourceTree = "<group>"; };
 		B2C6617F1BA7F944002AA058 /* SJVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVideoPlayerController.h; sourceTree = "<group>"; };
 		B2C661801BA7F944002AA058 /* SJVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVideoPlayerController.m; sourceTree = "<group>"; };
 		B2C661D21BABE791002AA058 /* AudioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioViewController.h; path = SJMediaPlayer/AudioViewController.h; sourceTree = SOURCE_ROOT; };
@@ -108,6 +102,12 @@
 		B2C6620A1BABFAB7002AA058 /* HttpDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpDataSource.m; sourceTree = "<group>"; };
 		B2C6620B1BABFAB7002AA058 /* LocalFileDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFileDataSource.h; sourceTree = "<group>"; };
 		B2C6620C1BABFAB7002AA058 /* LocalFileDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFileDataSource.m; sourceTree = "<group>"; };
+		B2DEC9C71BB29B2E001C8ED1 /* video-player-fullscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video-player-fullscreen@2x.png"; sourceTree = "<group>"; };
+		B2DEC9C81BB29B2E001C8ED1 /* video-player-fullscreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video-player-fullscreen@3x.png"; sourceTree = "<group>"; };
+		B2DEC9C91BB29B2E001C8ED1 /* video-player-pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video-player-pause@2x.png"; sourceTree = "<group>"; };
+		B2DEC9CA1BB29B2E001C8ED1 /* video-player-pause@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video-player-pause@3x.png"; sourceTree = "<group>"; };
+		B2DEC9CB1BB29B2E001C8ED1 /* video-player-play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video-player-play@2x.png"; sourceTree = "<group>"; };
+		B2DEC9CC1BB29B2E001C8ED1 /* video-player-play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video-player-play@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				B2C661F61BABF246002AA058 /* Resources */,
+				B2C661FE1BABFAB7002AA058 /* AudioPlayer */,
 				B2C6616E1BA7F944002AA058 /* SJVideoPlayer */,
 				B2C661441BA7F72E002AA058 /* AppDelegate.h */,
 				B2C661451BA7F72E002AA058 /* AppDelegate.m */,
@@ -210,7 +211,6 @@
 		B2C6616E1BA7F944002AA058 /* SJVideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				B2C661FE1BABFAB7002AA058 /* AudioPlayer */,
 				B2C6616F1BA7F944002AA058 /* Assets */,
 				B2C6617C1BA7F944002AA058 /* Classes */,
 			);
@@ -220,14 +220,14 @@
 		B2C6616F1BA7F944002AA058 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				B2DEC9C71BB29B2E001C8ED1 /* video-player-fullscreen@2x.png */,
+				B2DEC9C81BB29B2E001C8ED1 /* video-player-fullscreen@3x.png */,
+				B2DEC9C91BB29B2E001C8ED1 /* video-player-pause@2x.png */,
+				B2DEC9CA1BB29B2E001C8ED1 /* video-player-pause@3x.png */,
+				B2DEC9CB1BB29B2E001C8ED1 /* video-player-play@2x.png */,
+				B2DEC9CC1BB29B2E001C8ED1 /* video-player-play@3x.png */,
 				B2C661701BA7F944002AA058 /* kr-video-player-close@2x.png */,
 				B2C661711BA7F944002AA058 /* kr-video-player-close@3x.png */,
-				B2C661721BA7F944002AA058 /* kr-video-player-fullscreen@2x.png */,
-				B2C661731BA7F944002AA058 /* kr-video-player-fullscreen@3x.png */,
-				B2C661741BA7F944002AA058 /* kr-video-player-pause@2x.png */,
-				B2C661751BA7F944002AA058 /* kr-video-player-pause@3x.png */,
-				B2C661761BA7F944002AA058 /* kr-video-player-play@2x.png */,
-				B2C661771BA7F944002AA058 /* kr-video-player-play@3x.png */,
 				B2C661781BA7F944002AA058 /* kr-video-player-point@2x.png */,
 				B2C661791BA7F944002AA058 /* kr-video-player-point@3x.png */,
 				B2C6617A1BA7F944002AA058 /* kr-video-player-shrinkscreen@2x.png */,
@@ -239,8 +239,8 @@
 		B2C6617C1BA7F944002AA058 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				B2C6617D1BA7F944002AA058 /* KrVideoPlayerControlView.h */,
-				B2C6617E1BA7F944002AA058 /* KrVideoPlayerControlView.m */,
+				B2C6617D1BA7F944002AA058 /* SJVideoPlayerControlView.h */,
+				B2C6617E1BA7F944002AA058 /* SJVideoPlayerControlView.m */,
 				B2C6617F1BA7F944002AA058 /* SJVideoPlayerController.h */,
 				B2C661801BA7F944002AA058 /* SJVideoPlayerController.m */,
 			);
@@ -359,21 +359,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2C661FA1BABF246002AA058 /* sample.m4a in Resources */,
-				B2C661881BA7F944002AA058 /* kr-video-player-play@2x.png in Resources */,
 				B2C661831BA7F944002AA058 /* kr-video-player-close@3x.png in Resources */,
-				B2C661891BA7F944002AA058 /* kr-video-player-play@3x.png in Resources */,
-				B2C661851BA7F944002AA058 /* kr-video-player-fullscreen@3x.png in Resources */,
 				B2C6618B1BA7F944002AA058 /* kr-video-player-point@3x.png in Resources */,
-				B2C661841BA7F944002AA058 /* kr-video-player-fullscreen@2x.png in Resources */,
+				B2DEC9D01BB29B2E001C8ED1 /* video-player-pause@3x.png in Resources */,
 				B2C6614C1BA7F72E002AA058 /* Main.storyboard in Resources */,
+				B2DEC9CF1BB29B2E001C8ED1 /* video-player-pause@2x.png in Resources */,
+				B2DEC9CD1BB29B2E001C8ED1 /* video-player-fullscreen@2x.png in Resources */,
+				B2DEC9D21BB29B2E001C8ED1 /* video-player-play@3x.png in Resources */,
 				B2C661511BA7F72E002AA058 /* LaunchScreen.xib in Resources */,
 				B2C6614E1BA7F72E002AA058 /* Images.xcassets in Resources */,
+				B2DEC9D11BB29B2E001C8ED1 /* video-player-play@2x.png in Resources */,
 				B2C6618C1BA7F944002AA058 /* kr-video-player-shrinkscreen@2x.png in Resources */,
-				B2C661871BA7F944002AA058 /* kr-video-player-pause@3x.png in Resources */,
 				B2C661F91BABF246002AA058 /* airplane.aac in Resources */,
+				B2DEC9CE1BB29B2E001C8ED1 /* video-player-fullscreen@3x.png in Resources */,
 				B2C6618D1BA7F944002AA058 /* kr-video-player-shrinkscreen@3x.png in Resources */,
 				B2C661821BA7F944002AA058 /* kr-video-player-close@2x.png in Resources */,
-				B2C661861BA7F944002AA058 /* kr-video-player-pause@2x.png in Resources */,
 				B2C6618A1BA7F944002AA058 /* kr-video-player-point@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,7 +397,7 @@
 				B2C662121BABFAB7002AA058 /* HttpDataSource.m in Sources */,
 				B2C662131BABFAB7002AA058 /* LocalFileDataSource.m in Sources */,
 				B2C662101BABFAB7002AA058 /* DataSource.m in Sources */,
-				B2C6618E1BA7F944002AA058 /* KrVideoPlayerControlView.m in Sources */,
+				B2C6618E1BA7F944002AA058 /* SJVideoPlayerControlView.m in Sources */,
 				B2C661461BA7F72E002AA058 /* AppDelegate.m in Sources */,
 				B2C6618F1BA7F944002AA058 /* SJVideoPlayerController.m in Sources */,
 				B2C661681BA7F75F002AA058 /* VideoViewController.m in Sources */,

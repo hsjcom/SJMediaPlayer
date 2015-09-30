@@ -22,24 +22,28 @@
 
 - (void)dealloc {
     [self cancelTimer];
+    
+    self.audioPlayer.delegate = nil;
+    [self setAudioPlayer:nil];
 }
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
 		CGSize size = CGSizeMake(180, 50);
-        _audioPlayer = [[AudioPlayer alloc] init];
-        _audioPlayer.delegate = self;
+        
         [self updateControls];
 
 		_playFromHTTPButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 		_playFromHTTPButton.frame = CGRectMake((frame.size.width - size.width) / 2, 160, size.width, size.height);
 		[_playFromHTTPButton addTarget:self action:@selector(playFromHTTPButtonTouched) forControlEvents:UIControlEventTouchUpInside];
+        [_playFromHTTPButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
 		[_playFromHTTPButton setTitle:@"Play from HTTP" forState:UIControlStateNormal];
 
 		_playFromLocalFileButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 		_playFromLocalFileButton.frame = CGRectMake((frame.size.width - size.width) / 2, 220, size.width, size.height);
 		[_playFromLocalFileButton addTarget:self action:@selector(playFromLocalFileButtonTouched) forControlEvents:UIControlEventTouchUpInside];
+        [_playFromLocalFileButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
 		[_playFromLocalFileButton setTitle:@"Play from Local File" forState:UIControlStateNormal];
 	
 		_playButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -73,11 +77,15 @@
     return self;
 }
 
+- (AudioPlayer *)audioPlayer {
+    if (!_audioPlayer) {
+        _audioPlayer = [[AudioPlayer alloc] init];
+        _audioPlayer.delegate = self;
+    }
+    return _audioPlayer;
+}
+
 - (void)sliderChanged {
-	if (!_audioPlayer) {
-		return;
-	}
-	
 	NSLog(@"Slider Changed: %f", _slider.value);
 	
 	[self.audioPlayer seekToTime:_slider.value];
@@ -96,7 +104,7 @@
 }
 
 - (void)tick{
-	if (!_audioPlayer || _audioPlayer.duration == 0) {
+	if (self.audioPlayer.duration == 0) {
 		_slider.value = 0;
 		
 		return;
@@ -107,8 +115,8 @@
 	
 	_slider.value = self.audioPlayer.progress;
     
-    _curTimeLabel.text = [self.class dateForMinSec:[NSString stringWithFormat:@"%f", _audioPlayer.progress]];
-    _durationLabel.text = [self.class dateForMinSec:[NSString stringWithFormat:@"%f", _audioPlayer.duration]];
+    _curTimeLabel.text = [self.class dateForMinSec:[NSString stringWithFormat:@"%f", self.audioPlayer.progress]];
+    _durationLabel.text = [self.class dateForMinSec:[NSString stringWithFormat:@"%f", self.audioPlayer.duration]];
 }
 
 - (void)playFromHTTPButtonTouched {
@@ -120,15 +128,22 @@
 }
 
 - (void)playButtonPressed {
-	if (!self.audioPlayer) {
-		return;
-	}
-	
 	if (self.audioPlayer.state == AudioPlayerStatePaused) {
 		[self.audioPlayer resume];
+        [self setupTimer];
 	} else {
 		[self.audioPlayer pause];
+        [self cancelTimer];
 	}
+}
+
+- (void)stopPlayer {
+    [self.audioPlayer stop];
+    _slider.value = 0;
+    [self updateControls];
+    [self cancelTimer];
+    
+    _audioPlayer = nil;
 }
 
 - (void)updateControls {
@@ -179,8 +194,10 @@
 
 - (void)audioPlayerViewPlayFromHTTPSelected:(AudioPlayerView *)audioPlayerView {
     NSURL *url = [NSURL URLWithString:@"http://sc.111ttt.com/up/mp3/80979/0A314FB20108D7E0AD282BCC8C8038BD.mp3"];
+    //http://7xi45z.com1.z0.glb.clouddn.com/89656.mp3
     
     [self.audioPlayer setDataSource:[self.audioPlayer dataSourceFromURL:url] withQueueItemId:url];
+    [self setupTimer];
 }
 
 - (void)audioPlayerViewPlayFromLocalFileSelected:(AudioPlayerView *)audioPlayerView {
