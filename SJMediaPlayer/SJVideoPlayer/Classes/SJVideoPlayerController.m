@@ -3,7 +3,7 @@
 //  SJVideoPlayerPlus
 //
 //  Created by Shaojie Hong on 15/9/15.
-//  Copyright (c) 2015年 JiaHaiyang. All rights reserved.
+//  Copyright (c) 2015年 Shaojie Hong. All rights reserved.
 //
 
 #import "SJVideoPlayerController.h"
@@ -133,6 +133,9 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
         self.videoControl.pauseButton.hidden = YES;
         self.videoControl.playButton.hidden = NO;
         [self stopDurationTimer];
+        if (self.loadState == MPMovieLoadStateStalled) {
+            [self.videoControl.indicatorView startAnimating];
+        }
         if (self.playbackState == MPMoviePlaybackStateStopped) {
             [self.videoControl animateShow];
         }
@@ -156,6 +159,7 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
     self.videoControl.progressSlider.value = 0;
     [self stopDurationTimer];
     [self showViewCover];
+    [self backOrientationPortrait];
     
     if (self.willFinishPlayBlock) {
         self.willFinishPlayBlock();
@@ -175,12 +179,20 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
     [self stopDurationTimer];
     [self showViewCover];
     [self stop];
+    
+    if (self.willFinishPlayBlock) {
+        self.willFinishPlayBlock();
+    }
 }
 
 - (void)pauseButtonClick {
     [self pause];
     self.videoControl.playButton.hidden = NO;
     self.videoControl.pauseButton.hidden = YES;
+    
+    if (self.willPausehPlayBlock) {
+        self.willPausehPlayBlock();
+    }
 }
 
 - (void)closeButtonClick {
@@ -220,6 +232,9 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
 }
 
 - (void)onDeviceOrientationChange {
+    if (!self.playbackState == MPMoviePlaybackStatePlaying) {
+        return;
+    }
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
     UIInterfaceOrientation interfaceOrientation = (UIInterfaceOrientation)orientation;
     switch (interfaceOrientation) {
@@ -419,39 +434,6 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
     [self.videoControl layoutIfNeeded];
 }
 
-#pragma mark - 获取视频图片
-
-/**
- *  获取视频截图 同步
- */
-+ (UIImage *)thumbnailImageForVideo:(NSURL *)videoURL atTime:(NSTimeInterval)time {
-    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:videoURL options:nil];
-    NSParameterAssert(asset);
-    AVAssetImageGenerator *assetImageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
-    assetImageGenerator.appliesPreferredTrackTransform = YES;
-    assetImageGenerator.apertureMode = AVAssetImageGeneratorApertureModeEncodedPixels;
-    
-    CGImageRef thumbnailImageRef = NULL;
-    CFTimeInterval thumbnailImageTime = time;
-    NSError *thumbnailImageGenerationError = nil;
-    thumbnailImageRef = [assetImageGenerator copyCGImageAtTime:CMTimeMake(thumbnailImageTime, 60) actualTime:NULL error:&thumbnailImageGenerationError];
-    
-    if (!thumbnailImageRef)
-        NSLog(@"thumbnailImageGenerationError %@", thumbnailImageGenerationError);
-    
-    UIImage *thumbnailImage = thumbnailImageRef ? [[UIImage alloc] initWithCGImage:thumbnailImageRef] : nil;
-    
-    return thumbnailImage;
-}
-
-/**
- *  获取视频截图 异步
- */
-- (void)getThumbnailImageForVideo {
-    NSMutableArray *allThumbnails = [NSMutableArray  arrayWithObjects:[NSNumber numberWithDouble:0.5],nil];
-    [self requestThumbnailImagesAtTimes:allThumbnails timeOption:MPMovieTimeOptionExact];
-}
-
 - (void)showViewCover {
     if (!self.thumbnailImage) {
         [self getThumbnailImageForVideo];
@@ -498,6 +480,63 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
             _videoCover = nil;
         }];
     }
+}
+
+#pragma mark - 获取视频图片
+
+/**
+ *  获取视频截图 同步
+ */
++ (UIImage *)thumbnailImageForVideo:(NSURL *)videoURL atTime:(NSTimeInterval)time {
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:videoURL options:nil];
+    NSParameterAssert(asset);
+    AVAssetImageGenerator *assetImageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    assetImageGenerator.appliesPreferredTrackTransform = YES;
+    assetImageGenerator.apertureMode = AVAssetImageGeneratorApertureModeEncodedPixels;
+    
+    CGImageRef thumbnailImageRef = NULL;
+    CFTimeInterval thumbnailImageTime = time;
+    NSError *thumbnailImageGenerationError = nil;
+    thumbnailImageRef = [assetImageGenerator copyCGImageAtTime:CMTimeMake(thumbnailImageTime, 60) actualTime:NULL error:&thumbnailImageGenerationError];
+    
+    if (!thumbnailImageRef)
+        NSLog(@"thumbnailImageGenerationError %@", thumbnailImageGenerationError);
+    
+    UIImage *thumbnailImage = thumbnailImageRef ? [[UIImage alloc] initWithCGImage:thumbnailImageRef] : nil;
+    
+    return thumbnailImage;
+}
+
+/**
+ *  获取视频截图 异步
+ */
+- (void)asynchronouslyThumbnailImageForVideo:(NSURL *)videoURL {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        @autoreleasepool {
+            AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:videoURL options:nil];
+            NSParameterAssert(asset);
+            AVAssetImageGenerator *assetImageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+            assetImageGenerator.appliesPreferredTrackTransform = YES;
+            assetImageGenerator.apertureMode = AVAssetImageGeneratorApertureModeEncodedPixels;
+            
+            NSMutableArray *thumbnails = [NSMutableArray  arrayWithObjects:[NSNumber numberWithDouble:5], nil];
+            [assetImageGenerator generateCGImagesAsynchronouslyForTimes:thumbnails completionHandler:^(CMTime requestedTime, CGImageRef  _Nullable image, CMTime actualTime, AVAssetImageGeneratorResult result, NSError * _Nullable error) {
+                
+                if (image) {
+                    UIImage *coverImg = [[UIImage alloc] initWithCGImage:image];
+                    self.videoCover.image = coverImg;
+                }
+            }];
+        }
+    });
+}
+
+/**
+ *  获取视频截图 异步 MPMoviePlayerController方法
+ */
+- (void)getThumbnailImageForVideo {
+    NSMutableArray *allThumbnails = [NSMutableArray  arrayWithObjects:[NSNumber numberWithDouble:0.5],nil];
+    [self requestThumbnailImagesAtTimes:allThumbnails timeOption:MPMovieTimeOptionExact];
 }
 
 

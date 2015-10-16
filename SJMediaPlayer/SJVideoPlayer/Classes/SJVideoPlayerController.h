@@ -20,6 +20,8 @@
 @property (nonatomic, copy)void(^willChangeToFullscreenMode)(void);
 /** 进入播放结束状态 */
 @property (nonatomic, copy)void(^willFinishPlayBlock)(void);
+/** 进入播放暂停状态 */
+@property (nonatomic, copy)void(^willPausehPlayBlock)(void);
 
 @property (nonatomic, assign) CGRect frame;
 
